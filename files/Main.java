@@ -399,6 +399,20 @@ public class Main {
     );
     manager.addScenario(scenario);
     System.out.println("Сценарий 'Защита ТВ' добавлен.");
+
+    Если изменение НА какое-то число
+    Scenario<SmartThermostat> scenario = new Scenario<>(
+            "Эко-режим климата (снижение на 5°C)",
+            thermo -> thermo.isOn() && thermo.getTargetTemperature() > 25.0,
+            thermo -> {
+                double newTemp = thermo.getTargetTemperature() - 5.0;
+                thermo.setTargetTemperature(newTemp);
+                System.out.println("Сценарий: Термостат " + thermo.getName() + 
+                                   " охлажден на 5 градусов. Новая температура: " + newTemp + "°C.");
+            }
+    );
+    manager.addScenario(scenario);
+    System.out.println("Сценарий 'Эко-режим климата (снижение на 5°C)' добавлен.");
          */
     }
 
